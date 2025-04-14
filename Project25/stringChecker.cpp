@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 using std::string;
 
 class StringChecker {
@@ -16,5 +17,11 @@ public:
 
 	int pointOfLength() {
 		if (isSameLength()) return 60;
+		int s1len = s1.length();
+		int s2len = s2.length();
+		if (s1len >= s2len * 2) return 0;
+		if (s2len >= s1len * 2) return 0;
+
+		return -1;
 	}
 };

@@ -9,6 +9,14 @@ TEST(TS, TC1) {
 	EXPECT_EQ(expected, actual);
 }
 
+TEST(TS, TC2) {
+	StringChecker stringChecker;
+	stringChecker.setString("A", "BB");
+	int actual = stringChecker.pointOfLength();
+	int expected = 0;
+	EXPECT_EQ(expected, actual);
+}
+
 int main()
 {
 	::testing::InitGoogleMock();
