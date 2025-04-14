@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
+#include <unordered_set>
 using std::string;
+using std::unordered_set;
 
 class StringChecker {
 private:
@@ -32,7 +34,24 @@ public:
 	}
 
 	int pointOfAlpha() {
+		unordered_set<char> totalSet, set1, set2;
 
+		for (char c : s1)
+			set1.insert(c);
+
+		for (char c : s2)
+			set2.insert(c);
+
+		totalSet = set1;
+		totalSet.insert(set2.begin(), set2.end());
+
+		int totalCnt = totalSet.size();
+		int sameCnt = 0;
+
+		for (char c : set1)
+			if (set2.count(c)) sameCnt++;
+
+		return (sameCnt * 40) / totalCnt;
 	}
 
 };
