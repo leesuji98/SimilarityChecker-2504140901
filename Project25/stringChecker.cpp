@@ -17,11 +17,20 @@ public:
 
 	int pointOfLength() {
 		if (isSameLength()) return 60;
-		int s1len = s1.length();
-		int s2len = s2.length();
-		if (s1len >= s2len * 2) return 0;
-		if (s2len >= s1len * 2) return 0;
+		int A, B;
+		
+		A = s1.length();
+		B = s2.length();
 
-		return -1;
+		if (B > A) {
+			int temp = B;
+			B = A;
+			A = temp;
+		}
+
+		if (A >= B * 2) return 0;
+
+		int gap = A - B;
+		return (B - gap) * 60 / B;
 	}
 };
