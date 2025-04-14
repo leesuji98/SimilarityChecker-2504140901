@@ -1,36 +1,31 @@
 #include "gmock/gmock.h"
 #include "stringChecker.cpp"
 
-TEST(TS, TC1) {
+class SimilarityCheckerFixture : public testing::Test {
+public:
 	StringChecker stringChecker;
-	stringChecker.setString("ASD", "DSA");
-	int actual = stringChecker.pointOfLength();
-	int expected = 60;
-	EXPECT_EQ(expected, actual);
+
+	void lengthChecker(int expected, string s1, string s2) {
+		stringChecker.setString(s1, s2);
+		int actual = stringChecker.pointOfLength();
+		EXPECT_EQ(expected, actual);
+	}
+};
+
+TEST_F(SimilarityCheckerFixture, TC1) {
+	lengthChecker(60, "ASD", "DSA");
 }
 
-TEST(TS, TC2) {
-	StringChecker stringChecker;
-	stringChecker.setString("A", "BB");
-	int actual = stringChecker.pointOfLength();
-	int expected = 0;
-	EXPECT_EQ(expected, actual);
+TEST_F(SimilarityCheckerFixture, TC2) {
+	lengthChecker(0, "A", "BB");
 }
 
-TEST(TS, TC3) {
-	StringChecker stringChecker;
-	stringChecker.setString("AAABB", "BAA");
-	int actual = stringChecker.pointOfLength();
-	int expected = 20;
-	EXPECT_EQ(expected, actual);
+TEST_F(SimilarityCheckerFixture, TC3) {
+	lengthChecker(20, "AAABB", "BAA");
 }
 
-TEST(TS, TC4) {
-	StringChecker stringChecker;
-	stringChecker.setString("AA", "AAE");
-	int actual = stringChecker.pointOfLength();
-	int expected = 30;
-	EXPECT_EQ(expected, actual);
+TEST_F(SimilarityCheckerFixture, TC4) {
+	lengthChecker(30, "AA", "AAE");
 }
 
 int main()

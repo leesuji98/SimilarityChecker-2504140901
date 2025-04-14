@@ -17,20 +17,22 @@ public:
 
 	int pointOfLength() {
 		if (isSameLength()) return 60;
-		int A, B;
+		int largeString, smallString;
 		
-		A = s1.length();
-		B = s2.length();
+		largeString = s1.length();
+		smallString = s2.length();
 
-		if (B > A) {
-			int temp = B;
-			B = A;
-			A = temp;
-		}
+		if (smallString > largeString)
+			std::swap(smallString, largeString);
 
-		if (A >= B * 2) return 0;
+		if (largeString >= smallString * 2) return 0;
 
-		int gap = A - B;
-		return (B - gap) * 60 / B;
+		int gap = largeString - smallString;
+		return (smallString - gap) * 60 / smallString;
 	}
+
+	int pointOfAlpha() {
+
+	}
+
 };
